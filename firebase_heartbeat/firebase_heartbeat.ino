@@ -7,7 +7,7 @@
 #include "SSD1306.h"
 #include "main.cpp"
 int RECV_PIN = D4;
-sadlifhaoisdfh;oaisdhf'poajdfpoadopfaspodjf
+
 
 // Created by http://oleddisplay.squix.ch/ Consider a donation
 // In case of problems make sure that you are using the font file with the correct version!
