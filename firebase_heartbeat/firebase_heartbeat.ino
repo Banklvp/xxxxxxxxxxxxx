@@ -5,7 +5,7 @@
 #include <Ticker.h>
 #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
 #include "SSD1306.h"
-//#include "main.cpp"
+#include "main.cpp"
 int RECV_PIN = D4;
 
 
@@ -621,11 +621,10 @@ void loop() {
 display.clear();
    display.setFont(Roboto_16);
    display.setTextAlignment(TEXT_ALIGN_CENTER_BOTH);
-   display.drawString(DISPLAY_WIDTH/2, DISPLAY_HEIGHT/2 - 10, "Heart Rate : "+ String(BPM)+"\n"+getTime());
-//   display.drawString(0, 0, "Heart Rate : "+ String(BPM)+"\n"+getTime()+"\nHello Puri");
+   display.drawString(DISPLAY_WIDTH/2, DISPLAY_HEIGHT/2 - 10, "Heart Rate : "+ String(BPM));
    display.display();
 
-//   Serial.println(getTime());
+   Serial.println(getTime());
 
 //////////
 
@@ -639,7 +638,7 @@ void sendtcp()
 
 }
 
-String getTimeAndDate() {
+String getTime() {
   WiFiClient client;
   while (!!!client.connect("google.com", 80)) {
     Serial.println("connection failed, retrying...");
@@ -669,24 +668,6 @@ String getTimeAndDate() {
     }
   }
 }
-
-String getTime(){
-
-  String datetime = getTimeAndDate();
-  String engtime = datetime.substring(17,25);
-
-  String engtimearr[3];
-  String hours = "00";
-  hours[0] = engtime[0];
-  hours[1] = engtime[1];
-  
-  engtimearr[0] = String(hours.toInt()+7);
-  engtimearr[1] = engtime.substring(3,5);
-  engtimearr[2] = engtime.substring(6,8);
-
-  return engtimearr[0]+":"+engtimearr[1]+":"+engtimearr[2];
-  
-  }
 
 
 
